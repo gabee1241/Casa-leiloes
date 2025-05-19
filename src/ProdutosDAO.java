@@ -65,12 +65,12 @@ public class ProdutosDAO {
     return listagem;
 }
     
-    public void venderProduto(String nomeProduto){
+    public void venderProduto(int idProduto){
         try{
             conn = new conectaDAO().connectDB();
-            String sql = "UPDATE produtos SET status = 'Vendido' WHERE nome = ?";
+            String sql = "UPDATE produtos SET status = 'Vendido' WHERE id = ?";
             prep = conn.prepareStatement(sql);
-            prep.setString(1, nomeProduto);
+            prep.setInt(1, idProduto);
             prep.executeUpdate();
             JOptionPane.showMessageDialog(null, "Produto vendido com sucesso.");
             
